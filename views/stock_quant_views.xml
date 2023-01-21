@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?><odoo>
+  <data>
+    <record id="view_quant_package_form_inherited" model="ir.ui.view">
+      <field name="name">view.quant.package.form.inherited</field>
+      <field name="model">stock.quant.package</field>
+      <field name="inherit_id" ref="stock_quant_package_product_unique.view_quant_package_form_inherited"/>
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='product_id']" position="after">
+            <label for="gram_weight" attrs="{'invisible':[('product_id','=',False)]}"/>
+            <div name="gram_weight" attrs="{'invisible':[('product_id','=',False)]}">
+                <field name="gram_weight" class="oe_inline"/>
+                <field name="gram_weight_uom_id" class="oe_inline"/>
+            </div>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_quant_package_tree_inherited" model="ir.ui.view">
+      <field name="name">view.quant.package.tree.inherited</field>
+      <field name="model">stock.quant.package</field>
+      <field name="inherit_id" ref="stock_quant_package_product_unique.view_quant_package_tree_inherited"/>
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='product_id']" position="after">
+            <field name="gram_weight"/>
+            <field name="gram_weight_uom_id"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="quant_package_search_view_inherited" model="ir.ui.view">
+      <field name="name">quant.package.search.view.inherited</field>
+      <field name="model">stock.quant.package</field>
+      <field name="inherit_id" ref="stock.quant_package_search_view"/>
+      <field name="priority">10</field>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='location_id']" position="before">
+          <field name="gram_weight"/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
